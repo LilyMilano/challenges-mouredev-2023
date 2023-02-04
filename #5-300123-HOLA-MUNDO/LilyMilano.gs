@@ -1,3 +1,4 @@
-// Hello world in Gosu
+[indent=4]
 
-print('Hello World!');
+init
+    print "Hello, world!"

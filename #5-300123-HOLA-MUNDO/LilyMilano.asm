@@ -1,20 +1,20 @@
-DAT 01 48
-MOV 00 01
-DAT 01 65
-MOV 00 01
-DAT 01 6C
-MOV 00 01
-MOV 00 01
-DAT 02 6F
-MOV 00 02
-DAT 01 20
-MOV 00 01
-DAT 01 77
-MOV 00 01
-MOV 00 02
-DAT 01 72
-MOV 00 01
-DAT 01 6C
-MOV 00 01
-DAT 01 64
-MOV 00 01
+// https://www.tutorialspoint.com/assembly_programming/assembly_basic_syntax.htm
+
+
+
+section	.text
+   global _start     ;must be declared for linker (ld)
+	
+_start:	            ;tells linker entry point
+   mov	edx,len     ;message length
+   mov	ecx,msg     ;message to write
+   mov	ebx,1       ;file descriptor (stdout)
+   mov	eax,4       ;system call number (sys_write)
+   int	0x80        ;call kernel
+	
+   mov	eax,1       ;system call number (sys_exit)
+   int	0x80        ;call kernel
+
+section	.data
+msg db 'Hello, world!', 0xa  ;string to be printed
+len equ $ - msg     ;length of the string

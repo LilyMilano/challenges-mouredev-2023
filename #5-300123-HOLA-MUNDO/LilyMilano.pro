@@ -1,8 +1,5 @@
-// Prolog
+?- write('Hello World!'), nl.
+Hello World!
+true.
 
-
-
-helloWorld :-
-  write('Hello World').
-
-:- helloWorld.
+?-
