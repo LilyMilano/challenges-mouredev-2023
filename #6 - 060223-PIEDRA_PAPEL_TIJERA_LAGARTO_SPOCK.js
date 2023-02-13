@@ -10,7 +10,8 @@
  */
 // ......................................................
 
-//? Sheldon Game:
+//? Sheldon Game: Rock, Paper, Scissors, Lizard, Spock.
+
 //? Sheldon himself explained it as follows:
 // " The scissors cut the paper.
 // The paper covers the rock.
@@ -23,43 +24,61 @@
 // Spock vaporises the rock and, as always,
 // the rock crushes the scissors."
 
-// ......................................................
-
-let rules = {
-	'✂️': ['📃', '🦎'],
-	'📃': ['🗿', '🖖'],
-	'🗿': ['🦎', '✂️'],
-	'🦎': ['🖖', '📃'],
+const win_moves = {
+	'🗿': ['✂️', '🦎'],
+	'📄': ['🗿', '🖖'],
+	'✂️': ['🦎', '📄'],
+	'🦎': ['🖖', '📄'],
 	'🖖': ['✂️', '🗿'],
 };
 
-// ______________________________________________________
+// ......................................................
+//? Scoring Logic_________________________________________
 
-// Players:
-let sheldon_points = 0;
-let leonard_points = 0;
+function coopersGame(moves) {
+	let sheldon = 0;
+	let leonard = 0;
 
-// ______________________________________________________
+	for (let move of moves) {
 
-function Game(moves) {
-	sheldon_points = 0;
-	leonard_points = 0;
-	moves.forEach(playGame);
-	if (sheldon_points === leonard_points) {
-		return 'Tie';
-	} else if (sheldon_points > leonard_points) {
-		return 'Sheldon won!';
-	} else {
-		return 'Leonard won!';
+		if (move[0] !== move[1]) {
+			if (win_moves[move[0]].includes(move[1])) {
+				sheldon += 1;
+			} else {
+				leonard += 1;
+			}
+		}
 	}
+	// ___________________________________________________
+	if (sheldon !== leonard) {
+		if (sheldon > leonard) return 'Sheldon won!';
+		else return 'Leonard won!';
+	} else return 'Tie!';
 }
 
-// ______________________________________________________
+//? Testing results_________________________________________
 
-function playGame([player1, player2]) {
-	if (model[player1].indexOf(player2) > -1) {
-		points_player1 += 1;
-	} else if (model[player2].indexOf(player1) > -1) {
-		points_player2 += 1;
-	}
-}
+console.log(
+	coopersGame([
+		['🗿', '✂️'],
+		['✂️', '🗿'],
+		['📄', '✂️'],
+	])
+); // Log: Leonard won!
+
+console.log(
+	coopersGame([
+		['🗿', '✂️'],
+		['✂️', '🗿'],
+		['📄', '📄'],
+	])
+); // Log: Tie!
+
+console.log(
+	coopersGame([
+		['🗿', '✂️'],
+		['🦎', '📄'],
+		['✂️', '🦎'],
+	])
+); // Log: Sheldon won!
+
