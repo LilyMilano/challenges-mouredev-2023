@@ -35,27 +35,31 @@ const win_moves = {
 // ......................................................
 //? Scoring Logic_________________________________________
 
+let sheldon_score = 0;
+let leonard_score = 0;
+
 function coopersGame(moves) {
-	let sheldon = 0;
-	let leonard = 0;
+	sheldon_score = 0;
+	leonard_score = 0;
 
-	for (let move of moves) {
-
-		if (move[0] !== move[1]) {
-			if (win_moves[move[0]].includes(move[1])) {
-				sheldon += 1;
-			} else {
-				leonard += 1;
-			}
-		}
+	moves.forEach(playGame);
+	{
+		if (sheldon_score === leonard_score) {
+			return 'Tie!';
+		} else if (sheldon_score > leonard_score) {
+			return 'Sheldon won!';
+		} else return 'Leonard won!';
 	}
 	// ___________________________________________________
-	if (sheldon !== leonard) {
-		if (sheldon > leonard) return 'Sheldon won!';
-		else return 'Leonard won!';
-	} else return 'Tie!';
 }
 
+function playGame([sheldon, leonard]) {
+	if (win_moves[sheldon].indexOf(leonard) > -1) {
+		sheldon_score += 1;
+	} else if (win_moves[leonard].indexOf(sheldon) > -1) {
+		leonard_score += 1;
+	}
+}
 //? Testing results_________________________________________
 
 console.log(
@@ -81,4 +85,3 @@ console.log(
 		['✂️', '🦎'],
 	])
 ); // Log: Sheldon won!
-
