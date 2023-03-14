@@ -12,9 +12,9 @@ function pseudoRandom() {
 	let end = performance.now();
 	let p = Math.trunc((end - start) * 10000);
 
-	if(p <=100) {
+	if (p >= 0 && p <= 100) {
 		return p;
-	}
+	} else return 'unexpected value';
 }
 
-console.log(pseudoRandom());   // Log: 67
+console.log(pseudoRandom()); // Log: 67
