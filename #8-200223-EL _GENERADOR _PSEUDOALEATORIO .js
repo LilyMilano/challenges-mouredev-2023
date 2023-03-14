@@ -4,3 +4,15 @@
  *
  * Es más complicado de lo que parece...
  */
+
+function pseudoRandom() {
+	let start = performance.now();
+	let end = performance.now();
+	let p = Math.trunc((end - start) * 10000);
+
+	if(p <=100) {
+		return p;
+	}
+}
+
+console.log(pseudoRandom());   // Log: 67
