@@ -10,7 +10,7 @@
 function pseudoRandom() {
 	let start = performance.now();
 	let end = performance.now();
-	let p = Math.trunc((end - start) * 10000);
+	let p = Math.round((end - start) * 10000);
 
 	if (p >= 0 && p <= 100) {
 		return p;
