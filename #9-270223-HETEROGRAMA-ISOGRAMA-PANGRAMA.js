@@ -35,8 +35,8 @@ function isHeterogram(str) {
 let forTesting = [
 	'abcdefghijklmnopqrstuvwxyzz',
 	'Nightwalkers',
-	'I could easily forgive his pride, if he had not mortified mine',
 	'Nymphs beg for quick waltz',
+	'I could easily forgive his pride, if he had not mortified mine',
 ];
 
 forTesting.forEach((str) => {
@@ -46,8 +46,8 @@ forTesting.forEach((str) => {
 //Logs:
 // "abcdefghijklmnopqrstuvwxyzz" is Heterogram? false
 // "Nightwalkers" is Heterogram? true
-// "I could easily forgive his pride, if he had not mortified mine" is Heterogram? false
 // "Nymphs beg for quick waltz" is Heterogram? true
+// "I could easily forgive his pride, if he had not mortified mine" is Heterogram? false
 
 //? :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -86,9 +86,9 @@ forTesting.forEach((str) => {
 });
 
 //Logs:
-// "Shanghaiings" is Isogram? true 
-// "Lilianna" is Isogram? true 
-// "aaabbbccc" is Isogram? true 
+// "Shanghaiings" is Isogram? true
+// "Lilianna" is Isogram? true
+// "aaabbbccc" is Isogram? true
 // "Somewhere in La Mancha, in a place whose name I do not care to remember..." is Isogram? false
 
 //? :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
