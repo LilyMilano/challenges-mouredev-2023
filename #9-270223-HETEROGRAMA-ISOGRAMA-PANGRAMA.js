@@ -21,9 +21,13 @@ TODO Definitions:
 //TODO Heterogram:
 
 function isHeterogram(str) {
-	const array_alphabet = [...str.trim().toLowerCase().replace(/\s/g, '')];
-	const charSet = new Set(array_alphabet);
-	return array_alphabet.length === charSet.size;
+	try {
+		const array_alphabet = [...str.trim().toLowerCase().replace(/\s/g, '')];
+		const charSet = new Set(array_alphabet);
+		return array_alphabet.length === charSet.size;
+	} catch (error) {
+		console.log(error);
+	}
 }
 
 //Testing:
