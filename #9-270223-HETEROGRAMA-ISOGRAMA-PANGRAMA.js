@@ -16,7 +16,7 @@ TODO Definitions:
 
 ? From Wikipedia, the free encyclopedia */
 
-// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//? :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 //TODO Heterogram:
 
@@ -48,6 +48,48 @@ forTesting.forEach((str) => {
 // "Nightwalkers" is Heterogram? true
 // "I could easily forgive his pride, if he had not mortified mine" is Heterogram? false
 // "Nymphs beg for quick waltz" is Heterogram? true
+
+//? :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+//TODO Isogram:
+
+function isIsogram(str) {
+	try {
+		let size;
+		str = str.toLowerCase();
+		for (let char of str) {
+			let regex = new RegExp(`${char}`, 'g');
+			let actualSize = str.match(regex).length;
+
+			if (size && size !== actualSize) {
+				return false;
+			}
+			size = actualSize;
+		}
+		return true;
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+//Testing:
+
+forTesting = [
+	'Shanghaiings',
+	'Lilianna',
+	'aaabbbccc',
+	'Somewhere in La Mancha, in a place whose name I do not care to remember...',
+];
+
+forTesting.forEach((str) => {
+	console.log(`"${str}" is Isogram? ${isIsogram(str)}`);
+});
+
+//Logs:
+// "Shanghaiings" is Isogram? true 
+// "Lilianna" is Isogram? true 
+// "aaabbbccc" is Isogram? true 
+// "Somewhere in La Mancha, in a place whose name I do not care to remember..." is Isogram? false
 
 //? :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
